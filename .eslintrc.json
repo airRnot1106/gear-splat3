@@ -28,6 +28,8 @@
   },
   "plugins": ["vue", "@typescript-eslint", "tailwindcss"],
   "rules": {
-    "tailwindcss/migration-from-tailwind-2": "off"
+    "tailwindcss/migration-from-tailwind-2": "off",
+    "vue/require-v-for-key": "off",
+    "vue/valid-v-for": "off"
   }
 }
