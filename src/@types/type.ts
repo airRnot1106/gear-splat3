@@ -57,7 +57,7 @@ export interface IGear {
   ];
 }
 
-export interface IGears {
+export interface IGearSet {
   id: string;
   head: IGear;
   clothing: IGear;
