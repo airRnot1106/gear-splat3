@@ -1,7 +1,22 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()]
-})
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '~~': `${__dirname}/`,
+      '~~/': `${__dirname}/`,
+      '@@': `${__dirname}/`,
+      '@@/': `${__dirname}/`,
+      '~': `${__dirname}/src/`,
+      '~/': `${__dirname}/src/`,
+      '@': `${__dirname}/src/`,
+      '@/': `${__dirname}/src/`,
+      assets: `${__dirname}/src/assets/`,
+      'assets/': `${__dirname}/src/assets/`,
+    },
+  },
+});
