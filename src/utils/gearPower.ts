@@ -1,4 +1,4 @@
-import { MainGearPowerName } from '../@types/type';
+import { MainGearPowerName } from '@/@types/type';
 
 export const GEAR_POWER_KEYS = {
   FULL: [
