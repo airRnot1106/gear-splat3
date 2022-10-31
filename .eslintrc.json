@@ -26,5 +26,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["vue", "@typescript-eslint", "tailwindcss"]
+  "plugins": ["vue", "@typescript-eslint", "tailwindcss"],
+  "rules": {
+    "tailwindcss/migration-from-tailwind-2": "off"
+  }
 }
