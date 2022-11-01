@@ -32,6 +32,12 @@
     "vue/require-v-for-key": "off",
     "vue/valid-v-for": "off",
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "off"
+    "tailwindcss/classnames-order": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["../*", "./assets/*", "./components/*", "./pages/*"]
+      }
+    ]
   }
 }
