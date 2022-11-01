@@ -19,6 +19,7 @@ export default defineConfig({
       'assets/': `${__dirname}/src/assets/`,
     },
   },
+  base: '/gear-splat3/',
   build: {
     outDir: 'docs',
   },
