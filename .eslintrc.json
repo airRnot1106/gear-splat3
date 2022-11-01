@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:vue/essential",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": ["src/components/pages/*.vue"],
+      "rules": {
+        "vue/multi-word-component-names": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["vue", "@typescript-eslint", "tailwindcss"],
+  "rules": {
+    "tailwindcss/migration-from-tailwind-2": "off",
+    "vue/require-v-for-key": "off",
+    "vue/valid-v-for": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["../*", "./assets/*", "./components/*", "./pages/*"]
+      }
+    ]
+  }
+}
