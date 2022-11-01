@@ -40,9 +40,16 @@ export type MainGearPowerName =
   | ClothingGearPowerName
   | ShoesGearPowerName;
 
-type GearPowerIconName<T extends MainGearPowerName> = `icon_${T}`;
+export type GearPowerName =
+  | MainGearPowerName
+  | SubGearPowerName
+  | HeadGearPowerName
+  | ClothingGearPowerName
+  | ShoesGearPowerName;
 
-export type GearPowerRecord<T extends MainGearPowerName | SubGearPowerName> = {
+export type GearPowerIconName<T extends GearPowerName> = `icon_${T}`;
+
+export type GearPowerRecord<T extends GearPowerName> = {
   gearPower: T;
   icon: GearPowerIconName<T>;
 };
@@ -67,3 +74,5 @@ export interface IGearSet {
 export type GearSlotNumber = 0 | 1 | 2 | 3;
 
 export type GearType = 'HEAD' | 'CLOTHING' | 'SHOES';
+
+export type GearPowerCountType = '57' | '3,9';
