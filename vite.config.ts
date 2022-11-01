@@ -19,4 +19,7 @@ export default defineConfig({
       'assets/': `${__dirname}/src/assets/`,
     },
   },
+  build: {
+    outDir: 'docs',
+  },
 });
