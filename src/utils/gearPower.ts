@@ -1,7 +1,10 @@
-import { MainGearPowerName } from '@/@types/type';
+import {
+    ClothingGearPowerName, HeadGearPowerName, MainGearPowerName, ShoesGearPowerName,
+    SubGearPowerName
+} from '@/@types/type';
 
 export const GEAR_POWER_KEYS = {
-  FULL: [
+  FULL: <MainGearPowerName[]>[
     'ability_doubler',
     'comeback',
     'drop_roller',
@@ -29,7 +32,7 @@ export const GEAR_POWER_KEYS = {
     'tenacity',
     'thermal_ink',
   ],
-  SUB: [
+  SUB: <SubGearPowerName[]>[
     'ink_recovery_up',
     'ink_resistance_up',
     'ink_saver_main',
@@ -45,7 +48,7 @@ export const GEAR_POWER_KEYS = {
     'sub_resistance_up',
     'swim_speed_up',
   ],
-  HEAD: [
+  HEAD: <HeadGearPowerName[]>[
     'comeback',
     'last_ditch_effort',
     'opening_gambit',
@@ -65,7 +68,7 @@ export const GEAR_POWER_KEYS = {
     'sub_resistance_up',
     'swim_speed_up',
   ],
-  CLOTHING: [
+  CLOTHING: <ClothingGearPowerName[]>[
     'ability_doubler',
     'haunt',
     'ninja_squid',
@@ -86,7 +89,7 @@ export const GEAR_POWER_KEYS = {
     'sub_resistance_up',
     'swim_speed_up',
   ],
-  SHOES: [
+  SHOES: <ShoesGearPowerName[]>[
     'drop_roller',
     'object_shredder',
     'stealth_jump',
@@ -107,7 +110,7 @@ export const GEAR_POWER_KEYS = {
   ],
 };
 
-export const JA_GEAR_POWER_RECORD: Record<MainGearPowerName, string> = {
+export const GEAR_POWER_RECORD_JA: Record<MainGearPowerName, string> = {
   ability_doubler: '追加ギアパワー倍化',
   comeback: 'カムバック',
   drop_roller: '受け身',
