@@ -65,9 +65,7 @@ export const useGearStore = defineStore('gear', {
   actions: {
     saveCookie() {
       const gearSets = this.gearSets;
-      const gears = this.gears;
       useCookie<IGearSet[]>('gear-sets').value = gearSets;
-      useCookie<IGear[]>('gears').value = gears;
     },
     addGearSet() {
       const newGearSet: [IGear, IGear, IGear] = [
