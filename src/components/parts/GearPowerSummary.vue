@@ -84,8 +84,7 @@
 </script>
 
 <template>
-  <div class="relative p-5">
-    <p class="absolute top-0 left-3">ギアパワー合計</p>
+  <div class="relative flex flex-col justify-center p-5">
     <div
       v-for="gearPowersChunk in chunk(gearPowerSummary, 3)"
       class="flex items-center justify-center p-5"
