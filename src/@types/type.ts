@@ -66,6 +66,10 @@ export interface IGear {
 
 export interface IGearSet {
   id: string;
+  title: string;
+  description: string;
+  rating: number;
+  isFavorite: boolean;
   head: IGear;
   clothing: IGear;
   shoes: IGear;
