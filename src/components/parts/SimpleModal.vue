@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { X } from 'lucide-vue-next';
+
   export interface SimpleModalProps {
     modalId: string;
     modalButtonClasses: string[];
@@ -19,8 +21,8 @@
         <label
           :for="props.modalId"
           class="btn-sm btn-circle btn absolute right-2 top-2"
-          >✕</label
-        >
+          ><X
+        /></label>
         <slot name="content"></slot>
       </div>
     </div>
