@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { watch } from 'vue';
+  import { watch, onBeforeMount } from 'vue';
   import GearSetField from '@/components/parts/GearSetField.vue';
   import PlusButton from '@/components/parts/PlusButton.vue';
   import InfoAlert from '@/components/parts/InfoAlert.vue';
@@ -30,6 +30,10 @@
 
   watch(gearStore.gearSets, () => {
     gearStore.saveCookie();
+  });
+
+  onBeforeMount(() => {
+    gearStore.initializeGearSets();
   });
 </script>
 
