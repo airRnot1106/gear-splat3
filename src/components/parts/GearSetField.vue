@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  import { Trash, ChevronDown, Copy } from 'lucide-vue-next';
+  import { Trash, ChevronDown, Copy, MoreHorizontal } from 'lucide-vue-next';
   import GearField from '@/components/parts/GearField.vue';
   import GearPowerSummary from '@/components/parts/GearPowerSummary.vue';
+  import SimpleModal from '@/components/parts/SimpleModal.vue';
   import { GearPowerName, GearSlotNumber, IGearSet } from '@/@types/type';
 
   export interface GearSetFieldProps {
@@ -89,6 +90,19 @@
           </div>
         </li>
       </ul>
+    </div>
+    <div class="absolute bottom-4 right-4 sm:hidden">
+      <SimpleModal
+        :modal-id="`gear-power-summary-modal-${props.gearSet.id}`"
+        :modal-button-classes="['btn', 'btn-sm', 'btn-circle']"
+      >
+        <template #open-btn>
+          <MoreHorizontal />
+        </template>
+        <template #content>
+          <GearPowerSummary :gear-set="props.gearSet" />
+        </template>
+      </SimpleModal>
     </div>
   </div>
 </template>
