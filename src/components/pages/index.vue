@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { watch } from 'vue';
+  import { watch, onBeforeMount } from 'vue';
   import GearSetField from '@/components/parts/GearSetField.vue';
   import PlusButton from '@/components/parts/PlusButton.vue';
   import InfoAlert from '@/components/parts/InfoAlert.vue';
@@ -28,8 +28,16 @@
     gearStore.addGearSet();
   };
 
+  const updateGearSetTitle = (gearSetId: string, newTitle: string) => {
+    gearStore.updateGearSetTitle(gearSetId, newTitle);
+  };
+
   watch(gearStore.gearSets, () => {
     gearStore.saveCookie();
+  });
+
+  onBeforeMount(() => {
+    gearStore.initializeGearSets();
   });
 </script>
 
@@ -43,6 +51,7 @@
         @update-gear-power="updateGearPower"
         @duplicate-gear-set="duplicateGearSet"
         @delete-gear-set="deleteGearSet"
+        @update-gear-set-title="updateGearSetTitle"
       />
     </div>
     <div v-else>
@@ -54,6 +63,9 @@
         </template>
       </InfoAlert>
     </div>
-    <PlusButton class="fixed bottom-14 right-14" @add-gear-set="addGearSet" />
+    <PlusButton
+      class="fixed bottom-8 right-8 sm:bottom-14 sm:right-14"
+      @add-gear-set="addGearSet"
+    />
   </div>
 </template>

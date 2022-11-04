@@ -1,7 +1,9 @@
 <script setup lang="ts">
-  import { Trash, ChevronDown, Copy } from 'lucide-vue-next';
+  import { Trash, ChevronDown, Copy, MoreHorizontal } from 'lucide-vue-next';
   import GearField from '@/components/parts/GearField.vue';
   import GearPowerSummary from '@/components/parts/GearPowerSummary.vue';
+  import SimpleModal from '@/components/parts/SimpleModal.vue';
+  import EditableTextInput from '@/components/parts/EditableTextInput.vue';
   import { GearPowerName, GearSlotNumber, IGearSet } from '@/@types/type';
 
   export interface GearSetFieldProps {
@@ -19,6 +21,7 @@
     ): void;
     (e: 'duplicateGearSet', gearSetId: string): void;
     (e: 'deleteGearSet', gearSetId: string): void;
+    (e: 'updateGearSetTitle', gearSetId: string, newTitle: string): void;
   }
 
   const emits = defineEmits<Emits>();
@@ -38,12 +41,20 @@
   const deleteGearSet = () => {
     emits('deleteGearSet', props.gearSet.id);
   };
+
+  const updateGearSetTitle = (newTitle: string) => {
+    emits('updateGearSetTitle', props.gearSet.id, newTitle);
+  };
 </script>
 
 <template>
-  <div class="relative rounded-3xl bg-white p-5 shadow-lg">
-    <div class="flex items-center justify-evenly">
-      <div class="w-full sm:border-r-2">
+  <div class="relative flex h-[25rem] rounded-3xl bg-white p-5 shadow-lg">
+    <div class="h-[20rem] w-full sm:border-r-2">
+      <EditableTextInput
+        :content="props.gearSet.title"
+        @update-content="updateGearSetTitle"
+      />
+      <div class="flex h-full flex-col justify-center">
         <p>アタマ</p>
         <GearField
           class="flex items-center justify-center"
@@ -66,8 +77,11 @@
           @update-gear-power="updateGearPower"
         />
       </div>
-      <div class="hidden w-full sm:block">
-        <GearPowerSummary :gear-set="props.gearSet" />
+    </div>
+    <div class="hidden h-[20rem] w-full sm:block">
+      <p class="p-1 text-xl">ギアパワー合計</p>
+      <div class="flex h-full flex-col justify-center">
+        <GearPowerSummary :gear-set="props.gearSet" class="h-full" />
       </div>
     </div>
     <div class="dropdown-end dropdown absolute top-2 right-2">
@@ -89,6 +103,22 @@
           </div>
         </li>
       </ul>
+    </div>
+    <div class="absolute bottom-8 right-4 sm:hidden">
+      <SimpleModal
+        :modal-id="`gear-power-summary-modal-${props.gearSet.id}`"
+        :modal-button-classes="['btn', 'btn-sm', 'btn-circle']"
+      >
+        <template #open-btn>
+          <MoreHorizontal />
+        </template>
+        <template #content>
+          <div>
+            <p class="p-1 text-xl">ギアパワー合計</p>
+            <GearPowerSummary :gear-set="props.gearSet" class="h-[20rem]" />
+          </div>
+        </template>
+      </SimpleModal>
     </div>
   </div>
 </template>

@@ -84,8 +84,7 @@
 </script>
 
 <template>
-  <div class="relative p-5">
-    <p class="absolute top-0 left-3">ギアパワー合計</p>
+  <div class="relative flex flex-col justify-center p-5">
     <div
       v-for="gearPowersChunk in chunk(gearPowerSummary, 3)"
       class="flex items-center justify-center p-5"
@@ -106,7 +105,7 @@
         >
       </div>
     </div>
-    <div class="absolute top-1/3 -right-2">
+    <div class="absolute top-[40%] -right-5">
       <div class="flex items-center py-1">
         <input
           v-model="countType"

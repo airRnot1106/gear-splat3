@@ -12,6 +12,10 @@ interface GearStoreState {
 const defaultGearSets: IGearSet[] = [
   {
     id: uuid(),
+    title: '-',
+    description: '',
+    rating: 0,
+    isFavorite: false,
     head: {
       id: uuid(),
       gearPowers: [
@@ -66,6 +70,16 @@ export const useGearStore = defineStore('gear', {
     saveCookie() {
       const gearSets = this.gearSets;
       useCookie<IGearSet[]>('gear-sets').value = gearSets;
+    },
+    initializeGearSets() {
+      const gearSets = this.gearSets;
+      for (const gearSet of gearSets) {
+        gearSet.title ??= '-';
+        gearSet.description ??= '';
+        gearSet.rating ??= 0;
+        gearSet.isFavorite ??= false;
+      }
+      this.saveCookie();
     },
     addGearSet() {
       const newGearSet: [IGear, IGear, IGear] = [
@@ -136,10 +150,15 @@ export const useGearStore = defineStore('gear', {
       this.gears.push(...newGearSet);
       this.gearSets.push({
         id: uuid(),
+        title: '-',
+        description: '',
+        rating: 0,
+        isFavorite: false,
         head: newGearSet[0],
         clothing: newGearSet[1],
         shoes: newGearSet[2],
       });
+      this.saveCookie();
     },
     removeGearSet(gearSetId: string) {
       const gearSet = this.gearSets.find((gearSet) => gearSet.id === gearSetId);
@@ -175,11 +194,16 @@ export const useGearStore = defineStore('gear', {
       this.gears.push(...newGearArr);
       const newGearSet: IGearSet = {
         id: uuid(),
+        title: `${gearSet.title}のコピー`,
+        description: gearSet.description,
+        rating: gearSet.rating,
+        isFavorite: gearSet.isFavorite,
         head: newGearArr[0],
         clothing: newGearArr[1],
         shoes: newGearArr[2],
       };
       this.gearSets.push(newGearSet);
+      this.saveCookie();
     },
     updateGear(
       gearId: string,
@@ -190,6 +214,15 @@ export const useGearStore = defineStore('gear', {
       if (!targetGear) return;
       targetGear.gearPowers[slot].gearPower = newGearPowerName;
       targetGear.gearPowers[slot].icon = `icon_${newGearPowerName}`;
+      this.saveCookie();
+    },
+    updateGearSetTitle(gearSetId: string, newTitle: string) {
+      const targetGearSet = this.gearSets.find(
+        (gearSet) => gearSet.id === gearSetId
+      );
+      if (!targetGearSet) return;
+      targetGearSet.title = newTitle;
+      this.saveCookie();
     },
   },
 });

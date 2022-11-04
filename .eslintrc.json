@@ -36,7 +36,13 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["../*", "./assets/*", "./components/*", "./pages/*"]
+        "patterns": [
+          "../*",
+          "./assets/*",
+          "./components/*",
+          "./pages/*",
+          "./*.vue"
+        ]
       }
     ]
   }
